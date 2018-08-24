@@ -53,7 +53,7 @@ FLAGS = None
 DATA_URL = 'http://download.tensorflow.org/models/image/imagenet/inception-2015-12-05.tgz'
 # pylint: enable=line-too-long
 
-
+'''
 class NodeLookup(object):
   """Converts integer node ID's to human readable labels."""
 
@@ -117,18 +117,15 @@ class NodeLookup(object):
     if node_id not in self.node_lookup:
       return ''
     return self.node_lookup[node_id]
-
+'''
 
 def create_graph():
-  """Creates a graph from saved GraphDef file and returns a saver."""
-  # Creates graph from saved graph_def.pb.
-  with tf.gfile.FastGFile(os.path.join(
-      FLAGS.model_dir, 'classify_image_graph_def.pb'), 'rb') as f:
+  with tf.gfile.FastGFile("./output_graph.pb", 'rb') as f:
     graph_def = tf.GraphDef()
     graph_def.ParseFromString(f.read())
     _ = tf.import_graph_def(graph_def, name='')
 
-
+'''
 def run_inference_on_image(image):
   """Runs inference on an image.
 
@@ -167,7 +164,7 @@ def run_inference_on_image(image):
       human_string = node_lookup.id_to_string(node_id)
       score = predictions[node_id]
       print('%s (score = %.5f)' % (human_string, score))
-
+'''
 
 def maybe_download_and_extract():
   """Download and extract model tar file."""
