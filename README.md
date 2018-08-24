@@ -4,7 +4,10 @@ This repository contains the code which run tensorflow image recognition in ROS 
 
 ## reference
 
+retrain tensorflow official image recognition(inception v3) model --
 https://github.com/akshaypai/tfClassifier
+
+runing tensorflow official image recognition(inception v3) in ros --
 https://github.com/OTL/rostensorflow
 
 ## Developer
