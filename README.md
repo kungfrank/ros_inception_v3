@@ -1,31 +1,26 @@
-rostensorflow
+ros_inception_v3
 =====================
 
 - Install TensorFlow (see [tensor flow install guide](https://www.tensorflow.org/install/install_linux))
 - Install ROS (see http://wiki.ros.org)
 - Install cv-bridge
 
+ROS camera driver & dependencies install
+-------------------------------------------
 ```bash
 $ sudo apt-get install ros-kinetic-cv-bridge ros-kinetic-opencv3
 ```
 
-- (Optional) Install camera driver (for example, cv_camera)
+Install camera driver (for example:cv_camera)
 
 ```bash
 $ sudo apt-get install ros-kinetic-cv-camera
 ```
 
-
-TensorFlow install note (without GPU)
+TensorFlow install
 -------------------------------------------
-Please read official guide. This is a only note for me.
-
-```bash
-$ sudo apt-get install python-pip python-dev python-virtualenv
-$ virtualenv --system-site-packages ~/tensorflow
-$ source ~/tensorflow/bin/activate
-$ pip install --upgrade tensorflow
-```
+Please read official guide.
+https://www.tensorflow.org/install/install_linux
 
 image_recognition.py
 --------------------------------
@@ -33,12 +28,45 @@ image_recognition.py
 * publish: /result (std_msgs/String)
 * subscribe: /image (sensor_msgs/Image)
 
-How to try
+Usage
 
 ```bash
 $ roscore
 $ rosrun cv_camera cv_camera_node
-$ source ~/tensorflow/bin/activate
+$ python image_recognition.py image:=/cv_camera/image_raw
+$ rostopic echo /result
+```
+
+Retrain your own model
+--------------------------------
+Download retrain code
+
+```bash
+$ git clone https://github.com/akshaypai/tfClassifier
+$ cd tfClassifier/image_classification
+```
+Download dataset(for example:flower_photos dataset)
+
+```bash
+cd ~
+curl -O http://download.tensorflow.org/example_images/flower_photos.tgz
+tar xzf flower_photos.tgz
+```
+Retrain
+
+```bash
+python retrain.py --model_dir ./inception --image_dir ~/flower_photos ./output --how_many_training_steps 1000
+```
+
+After retrain process finish you can find ./output.pb and ./labels.txt in /tmp folder .
+Move or copy them to ros_inception_v3 folder.
+Replace original ./output.pb and ./labels.txt file with new file.
+
+Start test
+
+```bash
+$ roscore
+$ rosrun cv_camera cv_camera_node
 $ python image_recognition.py image:=/cv_camera/image_raw
 $ rostopic echo /result
 ```
