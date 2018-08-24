@@ -58,7 +58,9 @@ python retrain.py --model_dir ./inception --image_dir ~/flower_photos ./output -
 ```
 
 After retrain process finish you can find ./output.pb and ./labels.txt in /tmp folder .
+
 Move or copy them to ros_inception_v3 folder.
+
 Replace original ./output.pb and ./labels.txt file with new file.
 
 Start test
