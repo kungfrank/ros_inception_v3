@@ -3,7 +3,6 @@ ros_inception_v3
 
 - Install TensorFlow (see [tensor flow install guide](https://www.tensorflow.org/install/install_linux))
 - Install ROS (see http://wiki.ros.org)
-- Install cv-bridge
 
 ROS camera driver & dependencies install
 -------------------------------------------
