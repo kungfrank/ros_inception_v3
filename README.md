@@ -1,5 +1,19 @@
-ros_inception_v3
-=====================
+# ros_inception_v3
+
+This repository contains the code which run tensorflow image recognition in ROS ,and also enable to train your own model for image recognition.
+
+## reference
+
+https://github.com/akshaypai/tfClassifier
+https://github.com/OTL/rostensorflow
+
+## Developer
+
+*PouChun, Kung (k3083518729@gmail.com)
+
+## Usage & Tutorial
+
+Medium Notes: https://medium.com/@k3083518729/tensorflow-image-recognition-58b0ac77c263
 
 - Install TensorFlow (see [tensor flow install guide](https://www.tensorflow.org/install/install_linux))
 - Install ROS (see http://wiki.ros.org)
