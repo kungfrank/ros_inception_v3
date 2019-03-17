@@ -1,6 +1,6 @@
 # ros_inception_v3
 
-This repository contains the code which run tensorflow image recognition in ROS ,and also enable to train your own model for image recognition.
+This repository contains the codes to run tensorflow image recognition with Inception V3 network in ROS. Also, enable users to train their own network model for image recognition.
 
 ## reference
 
